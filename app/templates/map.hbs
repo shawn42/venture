@@ -1,0 +1,11 @@
+<h4>You are in "{{ name.blah }}"</h4>
+
+<table style="border: 1px solid gray;">
+  {{#each row in rows}}
+    <tr>
+      {{#each cell in row.columns}}
+        <td>{{cell.text}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</table>
