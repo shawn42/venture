@@ -1,13 +1,54 @@
 <h4>Name: {{ character.name }}</h4>
 <h4>Max Health: {{ character.maxHealth }}</h4>
+<h4>Max Mana: {{ character.maxMana }}</h4>
+{{#if character.hampered }}
+  <h5>I'm tired...</h5>
+{{/if}}
 <div>
   Constitution:
 </div>
 <div>
-  <a {{action 'decreaseStat' 'constitution'}}>less</a>
-  <span>{{ character.constitution }}</span>
-  <a {{action 'increaseStat' 'constitution'}}>more</a>
+  <span class="btn btn-danger" {{action 'decreaseStat' 'constitution'}}>less</span>
+  <strong>{{ character.constitution }}</strong>
+  <span {{action 'increaseStat' 'constitution'}}>more</span>
 </div>
+  
+<div>
+  Intelligence:
+</div>
+<div>
+  <span {{action 'decreaseStat' 'intelligence'}}>less</span>
+  <strong>{{ character.intelligence }}</strong>
+  <span {{action 'increaseStat' 'intelligence'}}>more</span>
+</div>
+
+<div>
+  Items:
+</div>
+<div>
+  <button {{ action 'addItem' }}>add</button>
+  {{#if hasItems}}
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Weight</td>
+        <td></td>
+      </tr>
+      {{#each character.items as |item|}}
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.weight }}</td>
+          <td><button {{ action 'removeItem' item }}>remove</button></td>
+        </tr>
+
+      {{/each}}
+    </table>
+   {{else}}
+     <div> RUN AWAY!! no items...</div>
+   {{/if}}
+</div>
+
+
 <button {{action 'increaseStat' 'level' }}>Level Up!</button>
 
 
