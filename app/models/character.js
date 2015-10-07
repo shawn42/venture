@@ -18,7 +18,7 @@ export default DS.Model.extend({
     return classes[Math.floor(Math.random()*classes.length)];
   }),
   
-  items: DS.hasMany('items'),
+  items: DS.hasMany('items',{async: true}),
   
   maxHealth: Ember.computed('level', 'effectiveConstitution', function() {
     return BASE_HP + (this.get('effectiveConstitution') * this.get('level'));

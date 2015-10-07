@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  character: Ember.computed.alias('model'),
+  characters: Ember.computed.alias('model'),
+  character: Ember.computed.alias('characters.firstObject'),
   
   hasItems: Ember.computed.notEmpty('character.items'),
   burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
@@ -9,22 +10,47 @@ export default Ember.Controller.extend({
   }),
   
   _modifyStat: function(stat, amount){
-    this.set('model.'+stat, this.get('model.'+stat)+amount);
+    this.set('character.'+stat, this.get('character.'+stat)+amount);
   },
   
   actions: {
+    changeCharacter: function(char) {
+      this.set('character', char);
+    },
+
+    removeCharacter: function() {
+      this.get('character').deleteRecord();
+      var that = this;
+      this.get('character').save().then(function() {
+        that.set('character');
+      });
+    },
+
+    saveCharacter: function() {
+      this.get('character').save();
+    },
+
+    addCharacter: function() {
+      var char = this.store.createRecord('character');
+      char.save();
+      this.set('character', char);
+    },
+
     removeItem: function(item) {
       this.get('character.items').removeObject(item);
     },
     addItem: function() {
       // TODO make this come from a random item generator?
-      var item = this.store.createRecord('item',
-        {
-        name: 'Sword of Life',
-        weight: 4,
-        constitutionBonus: 3
-      });
-      this.get('character.items').pushObject(item);
+      if(!this.get('character.hampered')) {
+        var item = this.store.createRecord('item',
+          {
+          name: 'Sword of Life',
+          weight: 4,
+          constitutionBonus: 3
+        });
+        item.save();
+        this.get('character.items').pushObject(item);
+      }
     },
     increaseStat: function(stat) {
       this._modifyStat(stat, 1);
