@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-import Item from './item';
 const BASE_HP = 40;
 const BASE_MP = 30;
 

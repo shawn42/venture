@@ -2,9 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function() {
-    // return this.store.findAll('character');
-    debugger;
-    return this.store.query('character', {level: "8"});
+    return this.store.findAll('character');
 //
 //
 //     var char = this.store.createRecord('character');
