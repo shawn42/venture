@@ -61,31 +61,13 @@
           </thead>
 
           <tbody>
-            {{!--character-stat-modifier stat='strength' character=character--}}
-          <tr>
-            <td>strength</td>
-            <td>
-              <span {{action 'decreaseStat' 'strength'}} class="btn btn-default btn-xs">-</span>
-            </td>
-            <td> {{ character.strength }} </td>
-            <td>
-              <span {{action 'increaseStat' 'strength'}} class="btn btn-default btn-xs">+</span>
-            </td>
-            <td>{{ character.strengthBonus }}</td>
-          </tr>
+            {{!-- character-stat-modifier label='strength' stat=character.strength incAction=incAction decAction=decAction --}}
 
-          <tr>
-            <td>intelligence</td>
-            <td>
-              <span {{action 'decreaseStat' 'intelligence'}} class="btn btn-default btn-xs">-</span>
-            </td>
-            <td> {{ character.intelligence }} </td>
-            <td>
-              <span {{action 'increaseStat' 'intelligence'}} class="btn btn-default btn-xs">+</span>
-            </td>
-            <td>{{ character.intelligenceBonus }}</td>
-          </tr>
 
+            {{ character-stat-modifier label='strength' stat=character.strength bonus=character.strengthBonsu}}
+
+            {{ character-stat-modifier label='intelligence' stat=character.intelligence bonus=character.intelligenceBonus}}
+            
           <tr>
             <td>wisdom</td>
             <td>
