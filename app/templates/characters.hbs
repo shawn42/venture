@@ -61,60 +61,12 @@
           </thead>
 
           <tbody>
-            {{!-- character-stat-modifier label='strength' stat=character.strength incAction=incAction decAction=decAction --}}
-
-
             {{ character-stat-modifier label='strength' stat=character.strength bonus=character.strengthBonsu}}
-
             {{ character-stat-modifier label='intelligence' stat=character.intelligence bonus=character.intelligenceBonus}}
-            
-          <tr>
-            <td>wisdom</td>
-            <td>
-              <span {{action 'decreaseStat' 'wisdom'}} class="btn btn-default btn-xs">-</span>
-            </td>
-            <td> {{ character.wisdom }} </td>
-            <td>
-              <span {{action 'increaseStat' 'wisdom'}} class="btn btn-default btn-xs">+</span>
-            </td>
-            <td>{{ character.wisdomBonus }}</td>
-          </tr>
-
-          <tr>
-            <td>dexterity</td>
-            <td>
-              <span {{action 'decreaseStat' 'dexterity'}} class="btn btn-default btn-xs">-</span>
-            </td>
-            <td> {{ character.dexterity }} </td>
-            <td>
-              <span {{action 'increaseStat' 'dexterity'}} class="btn btn-default btn-xs">+</span>
-            </td>
-            <td>{{ character.dexterityBonus }}</td>
-          </tr>
-
-          <tr>
-            <td>constitution</td>
-            <td>
-              <span {{action 'decreaseStat' 'constitution'}} class="btn btn-default btn-xs">-</span>
-            </td>
-            <td> {{ character.constitution }} </td>
-            <td>
-              <span {{action 'increaseStat' 'constitution'}} class="btn btn-default btn-xs">+</span>
-            </td>
-            <td>{{ character.constitutionBonus }}</td>
-          </tr>
-
-          <tr>
-            <td>charisma</td>
-            <td>
-              <span {{action 'decreaseStat' 'charisma'}} class="btn btn-default btn-xs">-</span>
-            </td>
-            <td> {{ character.charisma }} </td>
-            <td>
-              <span {{action 'increaseStat' 'charisma'}} class="btn btn-default btn-xs">+</span>
-            </td>
-            <td>{{ character.charismaBonus }}</td>
-          </tr>
+            {{ character-stat-modifier label='wisdom' stat=character.wisdom bonus=character.wisdomBonus}}
+            {{ character-stat-modifier label='dexterity' stat=character.dexterity bonus=character.dexterityBonus}}
+            {{ character-stat-modifier label='constitution' stat=character.constitution bonus=character.constitutionBonus}}
+            {{ character-stat-modifier label='charisma' stat=character.charisma bonus=character.charismaBonus}}
           </tbody>
 
         </table>
