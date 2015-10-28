@@ -17,7 +17,7 @@
       <div class="panel-body">
         <h3>{{ character.name }} Level 
           <span {{action 'increaseStat' 'level' }}
-            class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.class }}</h3>
+            class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.characterClass }}</h3>
         <span class="btn btn-success" {{ action 'saveCharacter' }}>Save</span>
         <span class="btn btn-danger" {{ action 'removeCharacter' }}>Drop</span>
 

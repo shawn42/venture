@@ -32,7 +32,6 @@ export default Ember.Controller.extend({
 
     addCharacter: function() {
       var char = this.store.createRecord('character');
-      char.save();
       this.set('character', char);
     },
 

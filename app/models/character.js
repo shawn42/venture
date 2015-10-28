@@ -5,18 +5,31 @@ const BASE_HP = 40;
 const BASE_MP = 30;
 
 export default DS.Model.extend({
-  level: DS.attr('number', {defaultValue: 1}),
-  intelligence: 17,
-  strength: 4,
-  wisdom: 19,
-  constitution: 3,
-  dexterity: 7,
-  charisma: 8,
-  class: Ember.computed(function(){
+
+  // TODO make these based off max health/mana?
+  currentHealth: DS.attr('number', {defaultValue: 1}),
+  currentMana: DS.attr('number', {defaultValue: 1}),
+
+  name: DS.attr('string', {
+    defaultValue: function() {
+      var names = ['Zultar', 'Zorky', 'Merlin'];
+      return names[Math.floor(Math.random()*names.length)];
+    }
+  }),
+  characterClass: DS.attr('string', {defaultValue: function() {
     var classes = ['Wizard', 'Warrior', 'Bard'];
     return classes[Math.floor(Math.random()*classes.length)];
-  }),
+  }}),
+
+  level: DS.attr('number', {defaultValue: 1}),
+  intelligence: DS.attr('number',{defaultValue:1}),
+  strength: DS.attr('number',{defaultValue:1}),
+  wisdom: DS.attr('number',{defaultValue:1}),
+  constitution: DS.attr('number',{defaultValue:1}),
+  dexterity: DS.attr('number',{defaultValue:1}),
+  charisma: DS.attr('number',{defaultValue:1}),
   
+
   items: DS.hasMany('items',{async: true}),
   
   maxHealth: Ember.computed('level', 'effectiveConstitution', function() {
@@ -36,11 +49,6 @@ export default DS.Model.extend({
      return this.get('strength') * 5; 
   }),
   
-  name: Ember.computed(function(){
-    var names = ['Zultar', 'Zorky', 'Merlin'];
-    return names[Math.floor(Math.random()*names.length)];
-  }),
-
   itemConstitutionBonuses: Ember.computed.mapBy('items','constitutionBonus'),
   constitutionBonus: Ember.computed.sum('itemConstitutionBonuses'),
   effectiveConstitution: Ember.computed('constitutionBonus','constitution', function() {
