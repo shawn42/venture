@@ -1,9 +1,13 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations, {
+  validations: {
+    'character.name': {presence: true, length: {minimum: 3}}
+  },
   characters: Ember.computed.alias('model'),
   character: Ember.computed.alias('characters.firstObject'),
-  
+
   hasItems: Ember.computed.notEmpty('character.items'),
   burdenPercent: Ember.computed('character.itemWeight', 'character.maxWeight', function() {
     return Math.min(this.get('character.itemWeight') / this.get('character.maxWeight') * 100, 100);
@@ -27,7 +31,9 @@ export default Ember.Controller.extend({
     },
 
     saveCharacter: function() {
-      this.get('character').save();
+      if(this.get("isValid")) {
+        this.get('character').save();
+      }
     },
 
     addCharacter: function() {

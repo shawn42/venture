@@ -15,10 +15,19 @@
     <div class="panel panel-default">
       <div class="panel-heading">Basic Info</div>
       <div class="panel-body">
-        <h3>{{ character.name }} Level 
-          <span {{action 'increaseStat' 'level' }}
+
+        <h3> 
+          <div class={{if errors.character.name 'has-error' }}>
+          {{input value=character.name class="form-control" }}
+            {{#each errors.character.name as |err|}}
+              <span class="label label-danger">{{err}}</span>
+            {{/each}}
+          </div>
+
+          Level <span {{action 'increaseStat' 'level' }}
             class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.characterClass }}</h3>
-        <span class="btn btn-success" {{ action 'saveCharacter' }}>Save</span>
+
+        <span disabled={{unless isValid 'disabled'}} class="btn btn-success" {{ action 'saveCharacter' }}>Save</span>
         <span class="btn btn-danger" {{ action 'removeCharacter' }}>Drop</span>
 
         <div>Health</div>
