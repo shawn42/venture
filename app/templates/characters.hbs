@@ -24,7 +24,7 @@
             {{/each}}
           </div>
 
-          Level <span {{action 'increaseStat' 'level' }}
+          Level <span {{action 'levelUp' }}
             class="btn btn-sm btn-success">{{ character.level }}</span> {{ character.characterClass }}</h3>
 
         <span disabled={{unless isValid 'disabled'}} class="btn btn-success" {{ action 'saveCharacter' }}>Save</span>
@@ -70,7 +70,7 @@
           </thead>
 
           <tbody>
-            {{ character-stat-modifier label='strength' stat=character.strength bonus=character.strengthBonsu}}
+            {{ character-stat-modifier label='strength' stat=character.strength bonus=character.strengthBonus}}
             {{ character-stat-modifier label='intelligence' stat=character.intelligence bonus=character.intelligenceBonus}}
             {{ character-stat-modifier label='wisdom' stat=character.wisdom bonus=character.wisdomBonus}}
             {{ character-stat-modifier label='dexterity' stat=character.dexterity bonus=character.dexterityBonus}}

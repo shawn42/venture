@@ -18,6 +18,15 @@ export default Ember.Controller.extend(EmberValidations, {
   },
   
   actions: {
+    levelUp: function() {
+      this.incrementProperty('character.level');
+      this.send('showModal', {
+        template: 'level-character',
+        character: this.get('character'),
+        pointsLeft: 3
+      });
+    },
+
     changeCharacter: function(char) {
       this.set('character', char);
     },
