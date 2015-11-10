@@ -7,9 +7,11 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login', {path: '/'});
-  this.route('map');
-  this.route('characters');
   this.route('authenticated', function() {
+    this.route('map');
+    this.route('characters');
+    this.route('add-a-character');
+    this.route('play',{path:'/play/:character'});
     this.route('secretz');
   });
 });
