@@ -5,6 +5,8 @@ const BASE_HP = 40;
 const BASE_MP = 30;
 
 export default DS.Model.extend({
+  // statPointsToSpend: DS.attr('number', {defaultValue: 20}),
+  statPointsToSpend: 20,
 
   // TODO make these based off max health/mana?
   currentHealth: DS.attr('number', {defaultValue: 1}),
