@@ -1,2 +1,18 @@
 
 @import 'bower_components/bootstrap-sass/assets/stylesheets/_bootstrap';
+
+.map {
+  .tile {
+    valign: middle;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+
+    &.grass {
+      color: green;
+    }
+    &.water {
+      color: blue;
+    }
+  }
+}

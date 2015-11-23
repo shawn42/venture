@@ -11,6 +11,8 @@ export default DS.Model.extend({
   // TODO make these based off max health/mana?
   currentHealth: DS.attr('number', {defaultValue: 1}),
   currentMana: DS.attr('number', {defaultValue: 1}),
+  x: DS.attr('number', {defaultValue: 0}),
+  y: DS.attr('number', {defaultValue: 0}),
 
   name: DS.attr('string', {
     defaultValue: function() {
